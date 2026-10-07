@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Customs — Live App Check</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ivory: #f4f1e9;
+        --paper: #fbf9f4;
+        --ink: #1b1a16;
+        --navy: #11253f;
+        --gold: #9a7b4f;
+        --line: #e2dccd;
+        --muted: #827b6d;
+        --serif: "Cormorant Garamond", Georgia, serif;
+        --sans: "Jost", system-ui, sans-serif;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--ivory);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-weight: 300;
+        line-height: 1.65;
+      }
+      header {
+        background: var(--navy);
+        color: var(--ivory);
+        padding: 3.5rem 2rem;
+      }
+      header .inner { max-width: 900px; margin: 0 auto; }
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        font-size: 0.7rem;
+        color: #b79a6e;
+        margin: 0 0 1rem;
+      }
+      h1 {
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: clamp(2.2rem, 5vw, 3.4rem);
+        line-height: 1.05;
+        margin: 0 0 0.8rem;
+      }
+      header p { margin: 0; color: rgba(244, 241, 233, 0.8); max-width: 60ch; }
+      main { max-width: 900px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+      .check {
+        margin-bottom: 3.5rem;
+        padding-bottom: 3.5rem;
+        border-bottom: 1px solid var(--line);
+      }
+      .check:last-child { border-bottom: none; }
+      .tag {
+        display: inline-block;
+        font-size: 0.66rem;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--navy);
+        border: 1px solid var(--gold);
+        padding: 0.25rem 0.7rem;
+        border-radius: 2px;
+        margin-bottom: 0.9rem;
+      }
+      h2 {
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+        margin: 0 0 0.9rem;
+      }
+      .caption {
+        margin: 0 0 1.5rem;
+        font-size: 1.05rem;
+        color: #3a362e;
+        max-width: 62ch;
+      }
+      .shot {
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        overflow: hidden;
+        background: var(--paper);
+        box-shadow: 0 16px 40px rgba(17, 37, 63, 0.12);
+      }
+      .shot img { width: 100%; display: block; }
+      .shot.narrow { max-width: 420px; }
+      footer {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 2rem 4rem;
+        color: var(--muted);
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="inner">
+        <p class="eyebrow">Homework 4 · Live Site Check</p>
+        <h1>Campus Customs — App Check</h1>
+        <p>
+          Three checks against the running site (React + Vite frontend, FastAPI +
+          Pydantic AI backend over the Portkey gateway). Each screenshot was taken
+          from the live app; captions state what it proves.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="check">
+        <span class="tag">Check 1</span>
+        <h2>The chat checks live inventory levels</h2>
+        <p class="caption">
+          Asked "Is the Baseball Left Chest Crewneck in stock in XL?", the
+          assistant answers from the database — <strong>out of stock in XL,
+          available in S, M, L and XXL</strong>. That matches the real
+          <code>inventory</code> table exactly (XL quantity is 0), so the agent is
+          reading live stock, not guessing.
+        </p>
+        <div class="shot narrow">
+          <img
+            src="app_check_images/inventory_chat.png"
+            alt="Chat reply stating the crewneck is out of stock in XL but available in S, M, L and XXL"
+          />
+        </div>
+      </section>
+
+      <section class="check">
+        <span class="tag">Check 2</span>
+        <h2>The dynamic chat search updates the page</h2>
+        <p class="caption">
+          Asking "what hoodies do you have?" in the chat makes the agent search
+          the catalogue and the website re-renders: the page shows
+          <strong>"Results for 'what hoodies do you have?'" with 6 matching product
+          cards</strong>, each clickable through to its detail page. The chat
+          returns structured matches; the front end renders them on the page.
+        </p>
+        <div class="shot">
+          <img
+            src="app_check_images/dynamic_search.png"
+            alt="Products page showing 'Results for what hoodies do you have' with a grid of hoodie cards and the chat panel listing the same products"
+          />
+        </div>
+      </section>
+
+      <section class="check">
+        <span class="tag">Check 3 · Problem 9 usability</span>
+        <h2>Product filter &amp; search bar</h2>
+        <p class="caption">
+          The Problem 9 usability feature: the Products page has a live filter bar.
+          Here a <strong>"yale" search combined with the "Hoodies" category</strong>
+          narrows the grid instantly, with an "in stock only" toggle alongside —
+          letting shoppers browse 102 products without needing the chat.
+        </p>
+        <div class="shot">
+          <img
+            src="app_check_images/usability_filter.png"
+            alt="Products page filter bar with 'yale' typed, Hoodies category selected, and the grid filtered to Yale hoodies"
+          />
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      Screenshots captured from the live site at <code>localhost:5173</code>.
+      Images in <code>app_check_images/</code>.
+    </footer>
+  </body>
+</html>

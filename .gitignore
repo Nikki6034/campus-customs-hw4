@@ -1,0 +1,23 @@
+# Secrets — never commit the real key
+.env
+.env.*
+!.env.example
+
+# Local-only data pack (database + product images)
+data/
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+dist/
+
+# macOS
+.DS_Store
+
+# Corrupt audit backups (the live audit_trail.json IS tracked)
+*.corrupt.json
